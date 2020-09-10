@@ -1,0 +1,134 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Lesss Go</title>
+	<link type="text/css" rel="stylesheet" href="css/calclayout.css"  />	 
+	<script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
+	<script type="text/javascript" src="js/oscZenoedited.js" ></script>           
+	<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+	<meta http-equiv="X-UA-Compatible" content="IE=8" />
+	<script type="text/javascript">
+    $(function() {
+    $("#keyPad").draggable({ 
+        start: function() { 
+         $(this).css({ height: "auto", width: "223px" }); 
+     }, 
+     stop: function() { 
+         $(this).css({ height: "auto", width: "223px" }); 
+	 } 
+   }); 
+    
+	$(".calc_min").live('click', function(){
+		$('#mainContentArea').toggle();
+		<!-- $('#keyPad_Help').hide(); -->
+               <!--  $('#keyPad_Helpback').hide();  -->
+				 $(".help_back").hide();
+		$('#keyPad').addClass("reduceWidth");
+		$('#helptopDiv span').addClass("reduceHeader");
+//		$('#calc_min').toggleClass("reduceHeader");
+		$(this).removeClass("calc_min").addClass('calc_max');
+	});
+	$(".calc_max").live('click', function(){
+            $(this).removeClass("calc_max").addClass('calc_min');
+		$('#mainContentArea').toggle();
+		if($("#helpContent").css('display') == 'none'){
+        $('#keyPad_Help').show();
+        }
+        else{
+            $('#keyPad_Helpback').show();
+        }
+		<!-- $('#keyPad_Help').show(); -->
+		$('#keyPad').removeClass("reduceWidth");
+		$('#helptopDiv span').removeClass("reduceHeader");
+	});
+  });
+		$('#closeButton').click(function(){
+			$('#loadCalc').hide();
+		});
+
+	</script>
+	<style type="text/css">
+		*.unselectable {
+		   -moz-user-select: -moz-none;
+		   -khtml-user-select: none;
+		   -webkit-user-select: none;
+
+		   /*
+			 Introduced in IE 10.
+			 See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+		   */
+		   -ms-user-select: none;
+		   user-select: none;
+		}
+	</style>
+</head>
+<!--<body class="unselectable" oncontextmenu="return false;" onselect="return false;" ondragstart="return false;" onmousewheel="return false;">-->
+<body>
+	<div id="keyPad" class="ui-widget-content calc_container">
+    <!-- new Help changes -->
+    <div id="helptopDiv">
+	<span>Kitkat Calc</span>
+	</div>
+     <div class="calc_min" id="calc_min"></div>
+     <!-- <div class="calc_max hide" id="calc_max"></div> -->
+	 <div class="calc_close" id="closeButton"></div>
+	 <!-- main content start here-->
+	 <div id="mainContentArea">
+		<input type="text" id="keyPad_UserInput1" class="keyPad_TextBox1" readonly />
+		 <div class="text_container">
+			<input type="text" id="keyPad_UserInput" class="keyPad_TextBox" maxlength="30" readonly />
+			<span id="memory" class="memoryhide"><font size="2">M</span> 
+		</div>
+		<div class="clear"></div>
+		<div class="left_sec">
+			<div class="calc_row clear">
+				<a href="#nogo" id="keyPad_MC" class="keyPad_btnMemoryOp">MC</a>
+				<a href="#nogo" id="keyPad_MR" class="keyPad_btnMemoryOp">MR</a>
+				<a href="#nogo" id="keyPad_MS"	class="keyPad_btnMemoryOp">MS</a>
+				<a href="#nogo" id="keyPad_M+"	class="keyPad_btnMemoryOp">M+</a>
+				<a href="#nogo" id="keyPad_M-" class="keyPad_btnMemoryOp">M-</a>     
+			</div>
+			<div class="calc_row clear">
+			    <a href="#nogo" id="keyPad_btnBack" class="keyPad_btnCommand calc_arrows">
+					<div style="position: relative; top: -3px">&#8592;</div>
+				</a>
+				<a href="#nogo" id="keyPad_btnAllClr" class="keyPad_btnCommand">C</a>
+				<a href="#nogo" id="keyPad_btnInverseSign" class="keyPad_btnUnaryOp">+/-</a>
+				<a href="#nogo" id="keyPad_btnSquareRoot" class="keyPad_btnUnaryOp">
+					<div style="position: relative; top: 1px">&#8730;</div>
+				</a>
+			</div>
+			<div class="calc_row clear" style="margin-top: 5px;">
+				<a href="#nogo" id="keyPad_btn7" class="keyPad_btnNumeric">7</a>
+				<a href="#nogo" id="keyPad_btn8" class="keyPad_btnNumeric">8</a>
+				<a href="#nogo" id="keyPad_btn9" class="keyPad_btnNumeric ">9</a>
+				<a href="#nogo" id="keyPad_btnDiv" class="keyPad_btnBinaryOp">/</a>
+				<a href="#nogo" id="keyPad_%" class="keyPad_btnBinaryOp">%</a>
+			</div>
+			<div class="calc_row clear">
+				<a href="#nogo" id="keyPad_btn4" class="keyPad_btnNumeric">4</a>
+				<a href="#nogo" id="keyPad_btn5" class="keyPad_btnNumeric">5</a>
+				<a href="#nogo" id="keyPad_btn6" class="keyPad_btnNumeric ">6</a>
+				<a href="#nogo" id="keyPad_btnMult" class="keyPad_btnBinaryOp"><div style="position: relative; top: 3px; font-size: 20px">*</div></a>
+				<a href="#nogo" id="keyPad_btnInverse" class="keyPad_btnUnaryOp"><span class='baseele'>1/x</span></a>
+			</div>
+			<div class="calc_row clear">
+				<a href="#nogo" id="keyPad_btn1" class="keyPad_btnNumeric">1</a>
+				<a href="#nogo" id="keyPad_btn2" class="keyPad_btnNumeric">2</a>
+				<a href="#nogo" id="keyPad_btn3" class="keyPad_btnNumeric">3</a>
+				<a href="#nogo" id="keyPad_btnMinus" class="keyPad_btnBinaryOp"><div style="position: relative; top: -1px; font-size: 20px">-</div></a>
+			</div>
+			<div class="calc_row clear">
+				<a href="#nogo" id="keyPad_btn0" class="keyPad_btnNumeric">0</a>
+				<a href="#nogo" id="keyPad_btnDot" class="keyPad_btnNumeric ">.</a>
+				<a href="#nogo" id="keyPad_btnPlus" class="keyPad_btnBinaryOp">+</a>
+				<a href="#nogo" id="keyPad_btnEnter" class="keyPad_btnCommand "><div style="margin-bottom: 2px;">=</div></a>
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	</div>
+    
+    
+</body>
+</html>
